@@ -1,5 +1,11 @@
 # wordpress_compose
-<h3>COMPLETE HOSTING SOLUTION</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" height="200" align="left">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/MariaDB_colour_logo.svg" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" height="200">
+
+
+<h1>COMPLETE HOSTING SOLUTION</h1>
 <ul>
 <li><b>Wordpress</b></li>
 <li><b>MariaDB</b></li>
