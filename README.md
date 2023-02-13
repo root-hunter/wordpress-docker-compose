@@ -4,7 +4,6 @@
 <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" height="200">
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" height="200">
 
-
 <h1>COMPLETE HOSTING SOLUTION</h1>
 <ul>
 <li><b>Wordpress</b></li>
@@ -13,7 +12,6 @@
 <li><b>SFTP</b></li>
 <li><b>Docker Compose</b></li>
 </ul>
-
 
 <p>This project is a Docker Compose-based solution that integrates <b>WordPress</b>, <b>Redis</b>, and <b>features FTP</b> connectivity and <b>automatic database and WordPress backups to Google Firebase Storage</b>.
 </p>
