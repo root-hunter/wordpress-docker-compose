@@ -1,0 +1,112 @@
+services:
+  db:
+    container_name: web_mariadb
+    image: mariadb:latest
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    expose:
+      - 3306
+      - 33060
+    networks:
+      - app-tier
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 256M
+    
+  phpmyadmin:
+    container_name: web_phpmyadmin
+    depends_on:
+      - db
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - "40001:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306 
+    networks:
+      - app-tier
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 64M
+  wordpress:
+    container_name: web_wordpress
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+    - ./wp_data:/var/www/html
+    
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=$MYSQL_USER
+      - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
+      - WORDPRESS_DB_NAME=$MYSQL_DATABASE
+    networks:
+      - app-tier
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 256M
+
+  ftpd_server:
+    container_name: web_ftpd
+    image: stilliard/pure-ftpd
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes: # remember to replace /folder_on_disk/ with the path to where you want to store the files on the host machine
+      - "./wp_data:/home/wordpress/"
+      - "./conf/passwd:/etc/pure-ftpd/passwd"
+      - "./conf/ssl:/etc/ssl/private/"
+      - "/etc/letsencrypt/live/example.it/cert.pem:/etc/ssl/private/pure-ftpd-cert.pem"
+      - "/etc/letsencrypt/live/example.it/privkey.pem:/etc/ssl/private/pure-ftpd-key.pem"
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: wordpress
+      FTP_USER_PASS: $FTP_USER_PASS
+      FTP_USER_HOME: /home/wordpress
+      ADDED_FLAGS: "--tls=2"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 64M
+  redis:
+    container_name: web_redis
+    image: redis:alpine
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    restart: always
+    networks:
+      - app-tier
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+
+networks:
+  app-tier:
+    driver: bridge

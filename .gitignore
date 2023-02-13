@@ -1,0 +1,11 @@
+.env
+node_modules/
+
+!wp_data/
+!db_data/
+!backups/
+
+wp_data/*
+db_data/*
+backups/*
+package-lock.json
