@@ -46,9 +46,6 @@ The FTP support provides a convenient way for developers to manage files and med
     <pre>
       git clone https://github.com/root-hunter/wordpress_compose.git
     </pre>
-    <p>
-      Replace [username] and [repository-name] with the appropriate values.
-    </p>
     <h2>Step 2: Create the environment file</h2>
     <p>
       In the cloned project repository, you will find a file named `.env.example`. This file contains the environment variables required for the setup to work. Create a copy of this file named `.env` and fill in the values with your own details.
