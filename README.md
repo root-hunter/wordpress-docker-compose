@@ -1,4 +1,4 @@
-# wmrc_hosting
+# wordpress_compose
 <h3>COMPLETE HOSTING SOLUTION</h3>
 <ul>
 <li><b>Wordpress</b></li>
