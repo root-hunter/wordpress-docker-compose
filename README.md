@@ -27,7 +27,7 @@ The FTP support provides a convenient way for developers to manage files and med
       This project also includes a feature for automatically backing up your database and WordPress installation to Google Firebase Storage. This provides an added level of security and peace of mind, ensuring that your website data is safe and can be easily restored in case of any issues.
     </p>
 
-    <h2>Introduction</h2>
+   <h2>Introduction</h2>
     <p>
       This tutorial will guide you through the process of setting up a Docker Compose-based WordPress hosting environment that integrates Redis, MariaDB, FTP connectivity, and automatic backups to Firebase Storage.
     </p>
