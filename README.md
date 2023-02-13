@@ -44,7 +44,7 @@ The FTP support provides a convenient way for developers to manage files and med
       Start by cloning the project repository to your local system. You can do this by running the following command in your terminal:
     </p>
     <pre>
-      git clone https://github.com/[username]/[repository-name].git
+      git clone https://github.com/root-hunter/wordpress_compose.git
     </pre>
     <p>
       Replace [username] and [repository-name] with the appropriate values.
